@@ -1,0 +1,15 @@
+version: '2'
+services:
+  myapp: 
+    build: ./ # specify the directory of the Dockerfile
+    ports:
+    - "8080:8080"
+    links:
+    - database  # link this service to the database service
+    volumes:
+    - .:/usr/src/app
+    depends_on: 
+    - database
+  database:   # name of the service
+    image: mongo  # specify image to build container from
+
